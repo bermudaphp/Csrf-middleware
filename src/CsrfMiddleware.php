@@ -22,9 +22,9 @@ class CsrfMiddleware implements MiddlewareInterface
     /**
      * @var callable
      */
-    private $setCookie;
-    private CsrfTokenGeneratorInterface $generator;
-    private static ?string $token = null;
+    protected $setCookie;
+    protected CsrfTokenGeneratorInterface $generator;
+    protected static ?string $token = null;
 
     private const methods = [
         RequestMethodInterface::METHOD_PUT,
