@@ -33,7 +33,7 @@ class CsrfMiddleware implements MiddlewareInterface
         RequestMethodInterface::METHOD_DELETE,
     ];
 
-    public const tokenKey = 'X-CSRF-Token';
+    public const tokenKey = 'x-csrf-token';
 
     public function __construct(CsrfTokenGeneratorInterface $generator = null, array $cookieParams = [])
     {
