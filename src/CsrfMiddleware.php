@@ -52,7 +52,7 @@ class CsrfMiddleware implements MiddlewareInterface
     /**
      * @inheritDoc
      */
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    public final function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if (!in_array(strtoupper($request->getMethod()), self::methods))
         {
