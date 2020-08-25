@@ -1,1 +1,4 @@
-# Csrf-middleware
+# Install
+```bash
+composer require bermudaphp/сsrf
+````
