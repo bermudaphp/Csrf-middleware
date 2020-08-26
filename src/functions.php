@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Bermuda\Middleware
+namespace Bermuda\Middleware;
 
 
 /**
