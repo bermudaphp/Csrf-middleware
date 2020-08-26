@@ -15,7 +15,7 @@ function csrf_field(): string
 /**
  * @return string
  */
-function csrf_token(): string
+function csrf_token():? string
 {
     return CsrfMiddleware::getToken();
 }
