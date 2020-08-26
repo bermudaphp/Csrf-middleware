@@ -1,4 +1,4 @@
 # Install
 ```bash
-composer require bermudaphp/сsrf
+composer require bermudaphp/csrf
 ````
