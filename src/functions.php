@@ -9,7 +9,7 @@ namespace Bermuda\Middleware;
  */
 function csrf_field(): string
 {
-    return '<input type="hidden" name="'. CsrfMiddleware::tokenKey .'" value="'. CsrfMiddleware::getToken() .'">';
+    return '<input type="hidden" name="'. CsrfMiddleware::tokenKey .'" value="'. (string) CsrfMiddleware::getToken() .'">';
 }
 
 /**
