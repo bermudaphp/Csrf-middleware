@@ -58,16 +58,17 @@ class CsrfMiddleware implements MiddlewareInterface
         {
             if ((self::$token = $this->getFirstToken($request)) != null)
             {
-                return $handler->handle($request);
+                return $handler->handle($request->withAttribute(self::tokenKey, self::$token));
             }
 
-            return $this->setFirstToken($handler->handle($request), self::$token = $this->generator->generate());
+            self::$token = $this->generator->generate();
+            return $this->setFirstToken($handler->handle($request->withAttribute(self::tokenKey, self::$token)), self::$token);
         }
 
-        if (($first = $this->getFirstToken($request)) == null
-            || ($second = $this->getSecondToken($request)) !== $first)
+        if ((self::$token = $this->getFirstToken($request)) == null
+            || ($second = $this->getSecondToken($request)) !== self::$token)
         {
-            throw CsrfException::new($first, $second ?? null);
+            throw CsrfException::new(self::$token, $second ?? null);
         }
 
         return $handler->handle($request);
