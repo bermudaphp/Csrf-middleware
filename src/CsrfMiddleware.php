@@ -118,7 +118,7 @@ class CsrfMiddleware implements MiddlewareInterface
     protected function unsetSecondToken(ServerRequestInterface $request): ServerRequestInterface
     {
         $body = (array) $request->getParsedBody();
-        unset(self::tokenKey);
+        unset($body[self::tokenKey]);
         
         return $request->withParsedBody($body);
     }
