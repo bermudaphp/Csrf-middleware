@@ -70,6 +70,8 @@ class CsrfMiddleware implements MiddlewareInterface
             throw CsrfException::new(self::$token, $second ?? null);
         }
 
+        $request = $this->unsetSecondToken($request);
+  
         return $handler->handle($request->withAttribute(self::tokenKey, self::$token));
     }
 
@@ -107,5 +109,17 @@ class CsrfMiddleware implements MiddlewareInterface
     protected function getSecondToken(ServerRequestInterface $request):? string
     {
         return ((array) $request->getParsedBody())[self::tokenKey] ?? null;
+    }
+    
+    /**
+     * @param ServerRequestInterface $request
+     * @return string|null
+     */
+    protected function unsetSecondToken(ServerRequestInterface $request): ServerRequestInterface
+    {
+        $body = (array) $request->getParsedBody();
+        unset(self::tokenKey);
+        
+        return $request->withParsedBody($body);
     }
 }
