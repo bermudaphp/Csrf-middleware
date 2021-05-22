@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Bermuda\Middleware;
-
 
 use Dflydev\FigCookies\SetCookie;
 use Dflydev\FigCookies\FigResponseCookies;
@@ -11,7 +9,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
 
 /**
  * Class CsrfMiddleware
